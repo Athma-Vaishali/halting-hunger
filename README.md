@@ -7,6 +7,7 @@ Unit 8: Group Milestone - README
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
+1. [Schema](#Schema)
 
 ## Overview
 ### Description
@@ -82,3 +83,50 @@ Volunteer HomeScreen:
 
 ### [BONUS] Interactive Prototype
 <img src="https://imgur.com/cGGnPMr.gif" width=500>
+
+
+## Schema 
+### Models
+#### Post
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | donor        | Pointer to User| post author-donor |
+   | title         | String     | name of the food item |
+   | details       | String   | details about the food item |
+   | vegetarian       | Boolean   | gives additional details |
+   | non-vegetarian       | Boolean   | gives additional details |
+   | homemade       | Boolean   | gives additional details |
+   | quantity | String   | quantity of the food item |
+   | startTime     | DateTime | start date-time for pickup |
+   | endTime     | Time | end date-time for pickup |
+   | location     | String | location for pickup |
+   | zipcode     | Number | zipcode for pickup |
+   | status        | String| status of the post made |
+   | volunteer        | Pointer to User| assigned volunteer to pickup |
+   
+#### User
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | userId      | String   | unique id for the user(default field) |
+   | password        | String| user password|
+   | name        | String| donor/volunteer name|
+   | phone        | Number| user phone  number|
+   | address         | String     | user location |
+   | type       | String   | user type(donor/volunteer) |
+   | organization | String   | organization to which user belongs to |
+   
+### Networking
+#### List of network requests by screen
+   - SignUp Screen
+        - (Create/POST) Add a new user
+   - Login Screen
+        - (Read/Get) Authenticate user credentials
+   - Donor Home Page
+        - (Create/POST) Create a new post object with food details
+        - (Update/Put) Update status of post
+  - Volunteer Home Page
+      - (Read/Get) Query all posts based on user location
+      - (Update/Put) Update the pickup status
